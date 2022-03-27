@@ -1,17 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+import './Layout.scss'
+import Header from "./Header";
+import Footer from "./Footer";
+
+const Layout = ({isModalActive, setIsModalActive}) => {
     return(
         <>
-            <nav className='navigation'>
-                <NavLink to="/">Messages</NavLink>
-                <NavLink to="/phone-call">Phone</NavLink>
-                <NavLink to="/settings">Settings</NavLink> 
-            </nav>
-            
+            <Header isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
             <Outlet />
-
-            <footer>@2022</footer>
+            <Footer />
         </>
     )
 }

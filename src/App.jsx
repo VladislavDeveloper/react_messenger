@@ -1,22 +1,17 @@
+import { useState } from 'react';
 import './App.scss';
-import { Routes, Route } from 'react-router-dom';
 
-import Messages from './Screens/Messages';
-import PhoneCall from './Screens/PhoneCall';
-import Settings from './Screens/Settings';
-import Layout from './Components/Layout';
+import Router from './Router/Router';
+import Modal from './Components/Modal';
 
 function App() {
+
+  const [ isModalActive, setIsModalActive ] = useState(false)
+
   return (
-    <div className="App">
-        <Routes>
-          <Route path='/' element={<Layout/>}>
-            <Route index element={<Messages />} />
-            <Route path='/phone-call' element={<PhoneCall />} />
-            <Route path='/settings' element={<Settings />} />
-            <Route path='*' element={<h2>Page not found 404 (</h2>} />
-          </Route>
-        </Routes>
+    <div className="app">
+        <Router isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
+        <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
     </div>
   );
 }
