@@ -1,28 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './App.scss';
 
 import Router from './Router/Router';
 import Modal from './Components/Modal';
 
 
-export const MyContext = React.createContext({name: "Vladislav"});
-export const MyThemeContext = React.createContext({theme: "dark"});
 
 function App() {
 
-  const [ isModalActive, setIsModalActive ] = useState(false)
+  const { darkTheme } = useSelector((state) => state.settingReducer)
+
+  console.log(darkTheme);
 
   return (
-    <div className="app">
-        <MyContext.Provider value={{name: "Vladislav"}}>
-        <MyThemeContext.Provider value={{theme: "dark"}}>
-         <Router isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
-          <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/> 
-          </MyThemeContext.Provider>
-        </MyContext.Provider>
-        
-    </div>
+    <div className={darkTheme ? "app_white" : "app_dark"} >
+      <Router />
+    </div >
   );
 }
 

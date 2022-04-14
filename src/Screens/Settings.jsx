@@ -1,23 +1,26 @@
-import { useContext } from "react"
-import { MyContext, MyThemeContext } from "../App"
+import { useSelector, useDispatch } from "react-redux";
 
-function Settings(){
+import { changeMainTheme } from "../Store/Settings/actions";
 
-    const userName = useContext(MyContext)
-    const MyTheme = useContext(MyThemeContext)
-    const name = userName.name
+function Settings() {
 
-    const theme = MyTheme.theme
+    const dispatch = useDispatch()
 
-    console.log(userName);
-    console.log(name);
+    const { userName, email, name, lastName, dateOfBurth } = useSelector((state) => state.profileReducer)
 
+    const changeTheme = () => {
+        dispatch(changeMainTheme())
+    }
 
-    return(
+    return (
         <>
-        <h2>Settings</h2>
-        <h2>{name}</h2>
-        <h3>Theme: {theme}</h3>
+            <h2>Your Profile</h2>
+            <h3>{userName}</h3>
+            <h3>{email}</h3>
+            <h3>{name}</h3>
+            <h3>{lastName}</h3>
+            <h3>{dateOfBurth}</h3>
+            <button onClick={() => changeTheme()}>change theme</button>
         </>
     )
 }
