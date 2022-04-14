@@ -1,8 +1,13 @@
+import React from 'react';
 import { useState } from 'react';
 import './App.scss';
 
 import Router from './Router/Router';
 import Modal from './Components/Modal';
+
+
+export const MyContext = React.createContext({name: "Vladislav"});
+export const MyThemeContext = React.createContext({theme: "dark"});
 
 function App() {
 
@@ -10,8 +15,13 @@ function App() {
 
   return (
     <div className="app">
-        <Router isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
-        <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
+        <MyContext.Provider value={{name: "Vladislav"}}>
+        <MyThemeContext.Provider value={{theme: "dark"}}>
+         <Router isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
+          <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive}/> 
+          </MyThemeContext.Provider>
+        </MyContext.Provider>
+        
     </div>
   );
 }

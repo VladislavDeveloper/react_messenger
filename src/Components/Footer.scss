@@ -1,14 +1,19 @@
 .footer{
     margin-top: auto;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: antiquewhite;
 
-    .navigation{
-        margin: 10px 15px 12px 15px;
+    .container{
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: antiquewhite;
+        max-width: 750px;
+        margin: 0 auto;
+
+        .navigation{
+        padding: 10px 15px 15px;
         display: flex;
         flex-direction: row;
         justify-content: center;
+
         .menu_nav{
             padding: 5px 4px 5px 6px;
         }
@@ -16,4 +21,7 @@
             margin-left: 25px;
         }
     }
+    }
+    
+    
 }

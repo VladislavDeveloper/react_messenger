@@ -8,7 +8,9 @@ const Layout = ({isModalActive, setIsModalActive}) => {
     return(
         <>
             <Header isModalActive={isModalActive} setIsModalActive={setIsModalActive}/>
-            <Outlet />
+            <div className="main_container">
+              <Outlet />  
+            </div> 
             <Footer />
         </>
     )
