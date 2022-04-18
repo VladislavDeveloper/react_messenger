@@ -3,18 +3,13 @@ import { useSelector } from 'react-redux';
 import './App.scss';
 
 import Router from './Router/Router';
-import Modal from './Components/Modal';
-
-
 
 function App() {
 
   const { darkTheme } = useSelector((state) => state.settingReducer)
 
-  console.log(darkTheme);
-
   return (
-    <div className={darkTheme ? "app_white" : "app_dark"} >
+    <div className={darkTheme ? "app_dark" : "app_white"} >
       <Router />
     </div >
   );

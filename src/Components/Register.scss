@@ -1,0 +1,18 @@
+.register_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: inherit;
+
+    .register_page_content_block {
+        padding: 8rem;
+        color: black;
+        background: white;
+
+        .register_form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

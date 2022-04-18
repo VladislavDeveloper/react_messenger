@@ -1,4 +1,7 @@
-import { createStore, compose, combineReducers } from "redux"
+import { createStore, compose, combineReducers, applyMiddleware } from "redux"
+import createSagaMiddleware from "@redux-saga/core";
+
+import rootSaga from "./Sagas";
 
 import { profileReducer } from "./Profile/reducer";
 import { settingReducer } from "./Settings/reducer";
@@ -14,12 +17,16 @@ const rootReducer = combineReducers({
     settingReducer
 })
 
+const sagaMiddleware = createSagaMiddleware()
+
 const configureStore = preloadedState => createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(),
+    composeEnhancers(applyMiddleware(sagaMiddleware)),
 )
 
 const store = configureStore({})
+
+sagaMiddleware.run(rootSaga)
 
 export default store

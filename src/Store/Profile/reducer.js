@@ -1,4 +1,5 @@
 const initialState = {
+    auth: true,
     userName: "Vladislav",
     email: "redin323@gmail.com",
     name: "Vladislav",
