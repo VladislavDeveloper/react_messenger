@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 
 import "./SignIn.scss"
 
 const SignIn = () => {
+
+    const dispatch = useDispatch();
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
@@ -10,8 +13,11 @@ const SignIn = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(`Email: ${email}`);
-        console.log(`Password: ${password}`);
+        dispatch({
+            type: "USER_SIGN_IN",
+            email,
+            password
+        })
     }
     return (
         <div className="sign_in_page">

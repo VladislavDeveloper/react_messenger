@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 
 //Необходимо защитить данные от несанкционированного доступа, путем их перемещения в  корень проекта, файл .env.local !!!
@@ -12,5 +13,7 @@ const firebaseConfig = {
 };
 
 const firebaseDB = initializeApp(firebaseConfig);
+
+export const auth = getAuth(firebaseDB);
 
 export default firebaseDB
